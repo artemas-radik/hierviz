@@ -13,7 +13,7 @@ flatten(data, category_col = NULL)
 }
 \value{
 A tibble with the category column replaced with fully qualified
-category names (section: category), with header rows removed.
+category names (section: category), with the header rows removed.
 }
 \description{
 This function processes hierarchical data where some rows are section headers

@@ -10,7 +10,7 @@
 #' @param category_col Name of the category column as a string. Defaults to first column.
 #'
 #' @return A tibble with the category column replaced with fully qualified
-#'   category names (section: category), with header rows removed.
+#'   category names (section: category), with the header rows removed.
 #' @importFrom rlang .data :=
 #' @importFrom dplyr n
 #' @export
@@ -28,7 +28,7 @@ flatten <- function(data, category_col = NULL) {
   if (is.null(category_col)) {
     category_col <- names(data)[1]
   }
-  
+
   # Verify category_col exists
   if (!category_col %in% names(data)) {
     stop(sprintf("Column '%s' not found in data", category_col))
@@ -51,16 +51,16 @@ flatten <- function(data, category_col = NULL) {
     dplyr::select(-section) |>  # Remove the temporary section column
     # Remove header rows
     dplyr::filter(!is.na(.data[[category_col]]))
-  
+
   # Check for duplicates in the flattened categories
   duplicates <- labeled_data |>
     dplyr::count(.data[[category_col]]) |>
     dplyr::filter(n > 1)
-    
+
   if (nrow(duplicates) > 0) {
     dup_cats <- paste(duplicates[[1]], collapse = ", ")
     stop(sprintf("Duplicate flattened categories detected: %s", dup_cats))
   }
-  
+
   return(labeled_data)
 }
