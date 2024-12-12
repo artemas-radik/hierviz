@@ -1,0 +1,91 @@
+---
+output: 
+  github_document:
+    hard_line_breaks: false
+    html_preview: false
+    preserve_yaml: true
+    pandoc_args: ["--wrap=none"]
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+options(width = 1000)  # Prevent code chunk wrapping
+```
+
+# hierviz
+
+Hierviz provides tools for working with hierarchical category data. It includes functions for:
+
+* Flattening nested categories into fully qualified names
+* Creating line charts to visualize trends across categories
+* Generating change tables to analyze period-over-period changes
+
+## Installation
+
+To use the package:
+``` r
+# Install remotes if you haven't already
+install.packages("remotes")
+remotes::install_github("artemas-radik/hierviz")
+```
+
+To develop the package:
+``` r
+# Install devtools if you haven't already
+install.packages("devtools")
+devtools::install_github("artemas-radik/hierviz")
+```
+
+## Example
+
+First, load the package:
+
+```{r setup}
+library(hierviz)
+```
+
+Create a query to analyze the data. First we need to flatten the hierarchical categories:
+
+```{r flatten}
+# Flatten the hierarchical categories (explicitly specify column)
+flat_msft <- flatten(msft, "Category")
+
+# Or use the default (first column)
+flat_msft <- flatten(msft)
+```
+
+```{r query-viz, fig.width=8, fig.height=5}
+# Create a query with specific columns
+q <- query(flat_msft, "Category", c("Q1-16", "Q1-17", "Q1-18"))
+
+# Use the query with visualizations
+line_chart(q)
+change_table(q)
+```
+
+The query function has smart defaults. You can use it in several ways:
+
+```{r query-examples, fig.width=8, fig.height=5}
+# Using defaults (first column as category, rest as data)
+q1 <- query(flat_msft)
+
+# Specifying category column but using all remaining columns as data
+q2 <- query(flat_msft, "Category")
+
+# Specifying both category and data columns
+q3 <- query(flat_msft, "Category", c("Q1-16", "Q2-16"))
+
+# All these will work:
+line_chart(q1)
+change_table(q2)
+line_chart(q3)
+```
+
+You can easily modify which data columns to compare by changing the `data_cols` parameter. For example, to compare different quarters or years of MSFT performance, just specify the column names you want to analyze based on the included MSFT dataset.

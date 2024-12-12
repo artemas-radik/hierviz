@@ -1,0 +1,30 @@
+Package: hierviz
+Title: Visualization Tools for Hierarchical Data
+Version: 0.0.0.9000
+Authors@R: 
+    person("Artemas", "Radik", , "artemas@college.harvard.edu", role = "cre")
+Description: Tools for flattening hierarchical category data and creating
+    visualizations like line charts and change tables. Supports nested category
+    structures and provides functions for data transformation and analysis.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    dplyr,
+    ggplot2,
+    gt,
+    rlang (>= 0.4.11),
+    stringr,
+    tibble,
+    tidyr
+Depends: 
+    R (>= 3.5)
+LazyData: true
+Suggests: 
+    knitr,
+    readxl,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
