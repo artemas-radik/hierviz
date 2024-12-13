@@ -10,6 +10,7 @@ output:
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
+knitr::include_graphics("man/figures/hierviz_hex.png")
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -23,13 +24,14 @@ options(width = 1000)  # Prevent code chunk wrapping
 
 Hierviz provides tools for working with hierarchical category data. It includes functions for:
 
-* Flattening nested categories into fully qualified names
-* Creating line charts to visualize trends across categories
-* Generating change tables to analyze period-over-period changes
+-   Flattening nested categories into full names
+-   Creating line charts to visualize trends across categories
+-   Generating change tables to analyze period-over-period changes
 
 ## Installation
 
 To use the package:
+
 ``` r
 # Install remotes if you haven't already
 install.packages("remotes")
@@ -37,6 +39,7 @@ remotes::install_github("artemas-radik/hierviz")
 ```
 
 To develop the package:
+
 ``` r
 # Install devtools if you haven't already
 install.packages("devtools")

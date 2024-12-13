@@ -9,7 +9,7 @@
 #' @param data A data frame or tibble containing the dataset to process.
 #' @param category_col Name of the category column as a string. Defaults to first column.
 #'
-#' @return A tibble with the category column replaced with fully qualified
+#' @return A tibble with the category column replaced with full
 #'   category names (section: category), with the header rows removed.
 #' @importFrom rlang .data :=
 #' @importFrom dplyr n

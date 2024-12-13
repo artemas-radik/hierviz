@@ -14,7 +14,7 @@ output:
 
 Hierviz provides tools for working with hierarchical category data. It includes functions for:
 
-- Flattening nested categories into fully qualified names
+- Flattening nested categories into full names
 - Creating line charts to visualize trends across categories
 - Generating change tables to analyze period-over-period changes
 
