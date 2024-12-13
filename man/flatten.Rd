@@ -12,7 +12,7 @@ flatten(data, category_col = NULL)
 \item{category_col}{Name of the category column as a string. Defaults to first column.}
 }
 \value{
-A tibble with the category column replaced with fully qualified
+A tibble with the category column replaced with full
 category names (section: category), with the header rows removed.
 }
 \description{
